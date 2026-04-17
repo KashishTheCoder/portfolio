@@ -258,8 +258,8 @@ const Portfolio = () => {
           <div className="flex flex-col gap-5 pt-4 items-center lg:items-start">
             <div className="flex gap-4">
               <a href="https://github.com/KashishTheCoder" target="_blank" rel="noreferrer" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><FaGithub size={22} /></a>
-              <a href="https://www.linkedin.com/kashish-aienthusiast" target="_blank" rel="noreferrer" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><FaLinkedin size={22} /></a>
-              <a href="#contact" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><Mail size={22}/></a>
+              <a href="https://www.linkedin.com/in/kashish-aienthusiast" target="_blank" rel="noreferrer" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><FaLinkedin size={22} /></a>
+              <a href="mailto:kashishbasreja.fss22@gmail.com" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><Mail size={22}/></a>
             </div>
             <a 
               href="/cv.pdf" 
@@ -482,7 +482,7 @@ const Portfolio = () => {
                   </div>
                   kashishbasreja.fss22@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/kashish-aienthusiast" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition group">
+                <a href="https://www.linkedin.com/in/kashish-aienthusiast" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition group">
                   <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition">
                     <FaLinkedin size={20}/>
                   </div>
@@ -518,7 +518,7 @@ const Portfolio = () => {
         <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm text-slate-400">
           <a href="https://github.com/KashishTheCoder" className="hover:text-blue-400 transition">GitHub</a>
           <span className="hidden md:inline">|</span>
-          <a href="https://www.linkedin.com/kashish-aienthusiast" className="hover:text-blue-400 transition">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/kashish-aienthusiast" className="hover:text-blue-400 transition">LinkedIn</a>
           <span className="hidden md:inline">|</span>
           <a href="mailto:kashishbasreja.fss22@gmail.com" className="hover:text-blue-400 transition">Email</a>
         </div>
