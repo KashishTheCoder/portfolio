@@ -12,6 +12,34 @@ const Portfolio = () => {
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // --- TYPING EFFECT STATES ---
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // --- TYPING EFFECT LOGIC ---
+  useEffect(() => {
+    const titles = ["AI Researcher", "Web Developer", "AI/ML Engineer", "WordPress Developer", "Deep Learning Engineer"];
+    const typeSpeed = isDeleting ? 50 : 100; // 50ms for deleting, 100ms for typing
+    const currentFullText = titles[titleIndex];
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && currentText === currentFullText) {
+        // Pause at the end of the word before starting to delete
+        setTimeout(() => setIsDeleting(true), 1500); 
+      } else if (isDeleting && currentText === '') {
+        // Move to the next word once fully deleted
+        setIsDeleting(false);
+        setTitleIndex((prev) => (prev + 1) % titles.length);
+      } else {
+        // Add or remove a character
+        setCurrentText(currentFullText.substring(0, currentText.length + (isDeleting ? -1 : 1)));
+      }
+    }, typeSpeed);
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, titleIndex]);
+
   useEffect(() => setMounted(true), []);
 
   const skills = {
@@ -148,7 +176,7 @@ const Portfolio = () => {
       `}} />
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-950/90 border-b border-white/10 shadow-lg"></nav>
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-950/90 border-b border-white/10 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
           <a href="#home" className="text-xl font-bold tracking-wider text-white">
             KASHISH<span className="text-blue-500">.DEV</span>
@@ -188,6 +216,7 @@ const Portfolio = () => {
             <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition text-blue-400">Contact</a>
           </div>
         )}
+      </nav>
 
       {/* Hero Section (Home) */}
       <section id="home" className="relative pt-24 pb-12 px-6 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 min-h-[90vh] lg:min-h-screen">
@@ -211,12 +240,15 @@ const Portfolio = () => {
 
         {/* Text Content */}
           <div className="flex-1 space-y-6 text-center lg:text-left z-10 max-w-3xl">
-            <h2 className="text-xl md:text-3xl text-slate-400 font-medium tracking-wide">Hello, It&apos;s Me</h2>
+            <h2 className="text-xl md:text-3xl text-slate-400 font-medium tracking-wide mt-12 md:mt-0">Hello, This is</h2>
             <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tight text-white leading-none">
               Kashish
             </h1>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pt-2">
-              And I&apos;m an <span className="text-blue-500">AI Researcher</span>
+            
+            {/* Animated Typing Title */}
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pt-2 min-h-[40px] md:min-h-[48px] lg:min-h-[60px]">
+              And I&apos;m a{currentText.match(/^[AEIOU]/) ? 'n' : ''} <span className="text-blue-500">{currentText}</span>
+              <span className="text-blue-500 animate-pulse font-light ml-1">|</span>
             </h3>
             
             <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 pt-4">
@@ -318,7 +350,7 @@ const Portfolio = () => {
       </section>
 
       {/* Tech Stack */}
-<     section id="skills" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
+      <section id="skills" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
         <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Layers size={32} className="text-blue-500"/> Tech Stack</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {Object.entries(skills).map(([category, items]) => (
