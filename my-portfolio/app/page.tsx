@@ -3,12 +3,15 @@
 import React, { useEffect, useState } from 'react';
 import { 
   Mail, ExternalLink, GraduationCap, Award, BookOpen, 
-  Briefcase, HeartHandshake, Code, Layout, Terminal, Send, Download 
+  Briefcase, HeartHandshake, Code, Layout, Send, Download, 
+  Menu, X, Layers, User 
 } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Portfolio = () => {
   const [mounted, setMounted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => setMounted(true), []);
 
   const skills = {
@@ -145,22 +148,49 @@ const Portfolio = () => {
       `}} />
 
       {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 backdrop-blur-md bg-slate-950/70 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="text-xl font-bold tracking-wider text-white">KASHISH<span className="text-blue-500">.DEV</span></span>
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-950/90 border-b border-white/10 shadow-lg"></nav>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+          <a href="#home" className="text-xl font-bold tracking-wider text-white">
+            KASHISH<span className="text-blue-500">.DEV</span>
+          </a>
           
-          <div className="flex space-x-4 md:space-x-8 text-xs md:text-sm font-medium overflow-x-auto">
-            <a href="#about" className="hover:text-blue-400 transition whitespace-nowrap">About</a>
-            <a href="#experience" className="hover:text-blue-400 transition whitespace-nowrap">Experience</a>
-            <a href="#projects" className="hover:text-blue-400 transition whitespace-nowrap">Projects</a>
-            <a href="#achievements" className="hover:text-blue-400 transition whitespace-nowrap">Achievements</a>
-            <a href="#contact" className="hover:text-blue-400 transition whitespace-nowrap">Contact</a>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="#home" className="hover:text-blue-400 transition">Home</a>
+            <a href="#about" className="hover:text-blue-400 transition">About</a>
+            <a href="#research" className="hover:text-blue-400 transition">Research</a>
+            <a href="#skills" className="hover:text-blue-400 transition">Skills</a>
+            <a href="#experience" className="hover:text-blue-400 transition">Experience</a>
+            <a href="#projects" className="hover:text-blue-400 transition">Projects</a>
+            <a href="#achievements" className="hover:text-blue-400 transition">Achievements</a>
+            <a href="#contact" className="hover:text-blue-400 transition">Contact</a>
           </div>
-        </div>
-      </nav>
 
-      {/* Hero Section */}
-      <section id="about" className="relative pt-24 pb-12 px-6 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 min-h-[90vh] lg:min-h-screen">
+          {/* Mobile Hamburger Button */}
+          <button 
+            className="md:hidden text-white focus:outline-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-slate-950/95 border-b border-white/10 flex flex-col items-center py-6 space-y-6 shadow-2xl backdrop-blur-lg">
+            <a href="#home" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Home</a>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">About</a>
+            <a href="#research" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Research</a>
+            <a href="#skills" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Skills</a>
+            <a href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Experience</a>
+            <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Projects</a>
+            <a href="#achievements" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Achievements</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition text-blue-400">Contact</a>
+          </div>
+        )}
+
+      {/* Hero Section (Home) */}
+      <section id="home" className="relative pt-24 pb-12 px-6 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 min-h-[90vh] lg:min-h-screen">
         {mounted && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
              {[...Array(15)].map((_, i) => (
@@ -180,18 +210,18 @@ const Portfolio = () => {
         )}
 
         {/* Text Content */}
-        <div className="flex-1 space-y-4 text-center lg:text-left z-10 max-w-3xl">
-          <h2 className="text-lg md:text-xl text-slate-400 font-medium tracking-wide">Hello, This is</h2>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-none">
-            Kashish
-          </h1>
-          <h3 className="text-xl md:text-2xl font-bold text-white pt-1">
-            And I&apos;m an <span className="text-blue-500">AI Researcher & Developer</span>
-          </h3>
-          
-          <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 pt-2">
-            I am a final-year CS student with a strong passion for Artificial Intelligence and building intelligent, real-world solutions. From developing an EEG-based emotion recognition system for my final project, to presenting accepted research at the iCoMET conference, I love pushing the boundaries of what&apos;s possible. Whether it&apos;s training Deep Learning models or building responsive web platforms, I focus on turning complex problems into scalable, user-centric applications.
-          </p>
+          <div className="flex-1 space-y-6 text-center lg:text-left z-10 max-w-3xl">
+            <h2 className="text-xl md:text-3xl text-slate-400 font-medium tracking-wide">Hello, It&apos;s Me</h2>
+            <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tight text-white leading-none">
+              Kashish
+            </h1>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pt-2">
+              And I&apos;m an <span className="text-blue-500">AI Researcher</span>
+            </h3>
+            
+            <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 pt-4">
+              Building at the intersection of Deep Learning, Explainable AI, and real-world software architecture.
+            </p>
           
           <div className="flex flex-col gap-5 pt-4 items-center lg:items-start">
             <div className="flex gap-4">
@@ -220,6 +250,35 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Detailed About Section */}
+      <section id="about" className="py-20 px-6 max-w-5xl mx-auto scroll-mt-24">
+        <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
+            <User size={32} className="text-blue-500"/> About Me
+          </h3>
+          
+          <div className="space-y-6 text-slate-300 text-sm md:text-base leading-relaxed relative z-10">
+            <p>
+              I am a Final Year Computer Science student with a strong passion for Artificial Intelligence, Machine Learning, and building intelligent, real-world solutions. Throughout my academic journey, I have developed a solid foundation in programming and problem-solving, working with technologies such as Python, C++, Java, and MySQL. My interest in AI and research has led me to explore advanced domains, and I am currently working on an EEG-based Emotion Recognition system as part of my Final Year Project, focusing on developing models that interpret human emotions from brain signals.
+            </p>
+            <p>
+              I have gained hands-on experience through internships and projects in both AI/ML and Web Development. I have worked as a Web Developer Intern at SEPCO and as a WordPress Developer Intern, where I built and managed responsive websites using industry-standard tools. Alongside this, I have developed multiple projects in Machine Learning and Deep Learning, strengthening my technical expertise as well as soft skills such as teamwork, communication, and adaptability. I have also contributed to research, and one of my papers has been accepted at the iCoMET research conference, marking an important milestone in my academic journey.
+            </p>
+            <p>
+              Beyond technical work, I actively contribute to student communities as an Active Member of the SIBA Tech Club and an Executive Committee Member of the Computer Science Society. Through these roles, I have participated in organizing events, supporting technical initiatives, and fostering collaborative learning environments.
+            </p>
+            <p>
+              I am currently seeking internship and entry-level opportunities in AI, Machine Learning, and Software Development, where I can apply my skills, contribute to impactful projects, and continue growing as a developer and researcher. My goal is to build intelligent and scalable systems that solve real-world problems and create meaningful impact.
+            </p>
+            <p className="font-medium text-slate-200">
+              Feel free to connect with me on LinkedIn or reach out via email at <a href="mailto:kashishbasreja.fss22@gmail.com" className="text-blue-400 hover:underline">kashishbasreja.fss22@gmail.com</a> for collaborations, opportunities, or discussions in AI and technology.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Education */}
       <section className="py-16 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-8 scroll-mt-24">
         <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition shadow-lg">
@@ -240,7 +299,8 @@ const Portfolio = () => {
           </div>
         </div>
 
-        <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition shadow-lg">
+        {/* Research Publication */}
+        <div id="research" className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition shadow-lg">
           <div className="flex items-center gap-3 mb-6 text-purple-400">
             <BookOpen size={28} />
             <h3 className="text-2xl font-bold text-white">Research Publication</h3>
@@ -257,9 +317,9 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Terminal size={32} className="text-blue-500"/> Technical Stack</h3>
+      {/* Tech Stack */}
+<     section id="skills" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
+        <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Layers size={32} className="text-blue-500"/> Tech Stack</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition">
@@ -422,6 +482,7 @@ const Portfolio = () => {
 
       {/* Footer */}
       <footer className="py-12 text-center border-t border-white/10">
+        <p className="text-slate-500 font-medium mb-4">Built with Next.js & Tailwind CSS</p>
         <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm text-slate-400">
           <a href="https://github.com/KashishTheCoder" className="hover:text-blue-400 transition">GitHub</a>
           <span className="hidden md:inline">|</span>
