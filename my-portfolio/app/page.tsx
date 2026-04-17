@@ -410,7 +410,7 @@ const Portfolio = () => {
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">Your Message</label>
-                <textarea name="message" id="message" rows="4" required className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition placeholder:text-slate-600 resize-none" placeholder="How can we work together?"></textarea>
+                <textarea name="message" id="message" rows={4} required className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition placeholder:text-slate-600 resize-none" placeholder="How can we work together?"></textarea>
               </div>
               <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)]">
                 Send Message <Send size={18} />
