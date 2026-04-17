@@ -181,16 +181,16 @@ const Portfolio = () => {
 
         {/* Text Content */}
         <div className="flex-1 space-y-4 text-center lg:text-left z-10 max-w-3xl">
-          <h2 className="text-lg md:text-xl text-slate-400 font-medium tracking-wide">Hello, I am</h2>
+          <h2 className="text-lg md:text-xl text-slate-400 font-medium tracking-wide">Hello, This is</h2>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-none">
             Kashish
           </h1>
           <h3 className="text-xl md:text-2xl font-bold text-white pt-1">
-            And I'm an <span className="text-blue-500">AI Researcher & Developer</span>
+            And I&apos;m an <span className="text-blue-500">AI Researcher & Developer</span>
           </h3>
           
           <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 pt-2">
-            I am a final-year CS student with a strong passion for Artificial Intelligence and building intelligent, real-world solutions. From developing an EEG-based emotion recognition system for my final project, to presenting accepted research at the iCoMET conference, I love pushing the boundaries of what's possible. Whether it's training Deep Learning models or building responsive web platforms, I focus on turning complex problems into scalable, user-centric applications.
+            I am a final-year CS student with a strong passion for Artificial Intelligence and building intelligent, real-world solutions. From developing an EEG-based emotion recognition system for my final project, to presenting accepted research at the iCoMET conference, I love pushing the boundaries of what&apos;s possible. Whether it&apos;s training Deep Learning models or building responsive web platforms, I focus on turning complex problems into scalable, user-centric applications.
           </p>
           
           <div className="flex flex-col gap-5 pt-4 items-center lg:items-start">
@@ -364,7 +364,7 @@ const Portfolio = () => {
               <GraduationCap size={40} />
             </div>
             <h4 className="text-xl font-bold text-white mb-4">Fully Funded Scholarship</h4>
-            <p className="text-slate-400 text-sm leading-relaxed">Secured for a 4-year Bachelor's degree under the prestigious Sindh Talent Hunt Program (STHP) - 2022.</p>
+            <p className="text-slate-400 text-sm leading-relaxed">Secured for a 4-year Bachelor&apos;s degree under the prestigious Sindh Talent Hunt Program (STHP) - 2022.</p>
           </div>
         </div>
       </section>
@@ -377,10 +377,10 @@ const Portfolio = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div>
               <h3 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                Let's <span className="text-blue-500">Connect.</span>
+                Let&apos;s <span className="text-blue-500">Connect.</span>
               </h3>
               <p className="text-slate-400 mb-10 text-lg leading-relaxed">
-                I'm currently open to new opportunities, AI research collaborations, and full-stack development roles. Whether you have a project in mind or just want to say hi, my inbox is always open!
+                I&apos;m currently open to new opportunities, AI research collaborations, and full-stack development roles. Whether you have a project in mind or just want to say hi, my inbox is always open!
               </p>
               
               <div className="space-y-6">
