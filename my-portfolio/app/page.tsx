@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { 
-  Mail, ExternalLink, GraduationCap, Award, BookOpen, 
-  Briefcase, HeartHandshake, Code, Layout, Send, Download, 
-  Menu, X, Layers, User 
+import {
+  Mail, ExternalLink, GraduationCap, Award, BookOpen,
+  Briefcase, HeartHandshake, Code, Layout, Send, Download,
+  Menu, X, Layers, User
 } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
@@ -26,7 +26,7 @@ const Portfolio = () => {
     const timer = setTimeout(() => {
       if (!isDeleting && currentText === currentFullText) {
         // Pause at the end of the word before starting to delete
-        setTimeout(() => setIsDeleting(true), 1500); 
+        setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && currentText === '') {
         // Move to the next word once fully deleted
         setIsDeleting(false);
@@ -43,7 +43,7 @@ const Portfolio = () => {
   useEffect(() => setMounted(true), []);
 
   const skills = {
-    Languages: ["C++", "Java", "Python", "SQL", "JavaScript", "HTML", "CSS"],
+    Languages: ["C++", "Java", "Python", "SQL", "JavaScript", "HTML", "CSS", "Kotlin"],
     Frameworks: ["React", "Node.js", "Express.js", "Flask", "Flutter", "NumPy", "Pandas", "Keras", "OpenCV", "TensorFlow", "PyTorch"],
     Tools: ["Git", "GitHub", "Linux", "MongoDB", "VS Code", "IntelliJ IDEA", "PyCharm", "Canva", "WordPress"]
   };
@@ -75,13 +75,13 @@ const Portfolio = () => {
     {
       role: "Executive Member",
       company: "Computer Science Society, Sukkur IBA",
-      date: "Oct 2025 – Present",
+      date: "Oct 2025 – May 2026",
       points: ["Participating in planning academic events and collaborating to increase student engagement in computing activities."]
     },
     {
       role: "Web Developer",
       company: "Students Empowered Oasis",
-      date: "Sep 2024 – Present",
+      date: "Sep 2024 – Apr 2026",
       points: [
         "Managed platforms for event content, created quizzes, and published newsletters.",
         "Designed registration forms and ensured smooth content management across platforms."
@@ -102,6 +102,20 @@ const Portfolio = () => {
       tech: ["Deep Learning", "Flutter", "Flask"],
       src: "/neuroemotion.png",
       link: "https://github.com/NeuroEmotion"
+    },
+    {
+      title: "Ocular Disease Detection",
+      desc: "Multi-label image classification platform evaluating ResNet50, VGG16, and EfficientNet-B3 architectures on the ODIR dataset to accurately screen retinal fundus samples for 8 pathologies simultaneously.",
+      tech: ["PyTorch", "Computer Vision", "ResNet", "EfficientNet"],
+      src: "/ocular.png",
+      link: "https://github.com/KashishTheCoder/ocular-disease-detection.git"
+    },
+    {
+      title: "Bespoke Threads",
+      desc: "A sleek mobile application marketplace tailored for custom handcrafted clothing and styling accessories.",
+      tech: ["Kotlin", "Android SDK", "Firebase"],
+      src: "/bespoke.png",
+      link: "https://github.com/KashishTheCoder/bespoke-threads-android.git"
     },
     {
       title: "MathTutor AI",
@@ -142,8 +156,9 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1128] via-slate-950 to-[#0a1128] text-slate-300 font-sans selection:bg-blue-500/30 overflow-x-hidden">
-      
-      <style dangerouslySetInnerHTML={{__html: `
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
         html { scroll-behavior: smooth; }
         .particle {
           position: absolute;
@@ -181,7 +196,7 @@ const Portfolio = () => {
           <a href="#home" className="text-xl font-bold tracking-wider text-white">
             KASHISH<span className="text-blue-500">.DEV</span>
           </a>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 text-sm font-medium">
             <a href="#home" className="hover:text-blue-400 transition">Home</a>
@@ -195,7 +210,7 @@ const Portfolio = () => {
           </div>
 
           {/* Mobile Hamburger Button */}
-          <button 
+          <button
             className="md:hidden text-white focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -222,47 +237,47 @@ const Portfolio = () => {
       <section id="home" className="relative pt-24 pb-12 px-6 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 min-h-[90vh] lg:min-h-screen">
         {mounted && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-             {[...Array(15)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className={i % 2 === 0 ? "particle rounded-sm" : "particle triangle"}
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    width: `${Math.random() * 30 + 10}px`,
-                    height: i % 2 === 0 ? `${Math.random() * 30 + 10}px` : '0',
-                    animationDuration: `${Math.random() * 10 + 15}s`,
-                    animationDelay: `${Math.random() * 5}s`
-                  }}
-                />
-             ))}
+            {[...Array(15)].map((_, i) => (
+              <div
+                key={i}
+                className={i % 2 === 0 ? "particle rounded-sm" : "particle triangle"}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 30 + 10}px`,
+                  height: i % 2 === 0 ? `${Math.random() * 30 + 10}px` : '0',
+                  animationDuration: `${Math.random() * 10 + 15}s`,
+                  animationDelay: `${Math.random() * 5}s`
+                }}
+              />
+            ))}
           </div>
         )}
 
         {/* Text Content */}
-          <div className="flex-1 space-y-6 text-center lg:text-left z-10 max-w-3xl">
-            <h2 className="text-xl md:text-3xl text-slate-400 font-medium tracking-wide mt-12 md:mt-0">Hello, This is</h2>
-            <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tight text-white leading-none">
-              Kashish
-            </h1>
-            
-            {/* Animated Typing Title */}
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pt-2 min-h-[40px] md:min-h-[48px] lg:min-h-[60px]">
-              And I&apos;m a{currentText.match(/^[AEIOU]/) ? 'n' : ''} <span className="text-blue-500">{currentText}</span>
-              <span className="text-blue-500 animate-pulse font-light ml-1">|</span>
-            </h3>
-            
-            <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 pt-4">
-              Building at the intersection of Deep Learning, Explainable AI, and real-world software architecture.
-            </p>
-          
+        <div className="flex-1 space-y-6 text-center lg:text-left z-10 max-w-3xl">
+          <h2 className="text-xl md:text-3xl text-slate-400 font-medium tracking-wide mt-12 md:mt-0">Hello, This is</h2>
+          <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tight text-white leading-none">
+            Kashish
+          </h1>
+
+          {/* Animated Typing Title */}
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pt-2 min-h-[40px] md:min-h-[48px] lg:min-h-[60px]">
+            And I&apos;m a{currentText.match(/^[AEIOU]/) ? 'n' : ''} <span className="text-blue-500">{currentText}</span>
+            <span className="text-blue-500 animate-pulse font-light ml-1">|</span>
+          </h3>
+
+          <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 pt-4">
+            Building at the intersection of Deep Learning, Explainable AI, and real-world software architecture.
+          </p>
+
           <div className="flex flex-col gap-5 pt-4 items-center lg:items-start">
             <div className="flex gap-4">
               <a href="https://github.com/KashishTheCoder" target="_blank" rel="noreferrer" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><FaGithub size={22} /></a>
               <a href="https://www.linkedin.com/in/kashish-aienthusiast" target="_blank" rel="noreferrer" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><FaLinkedin size={22} /></a>
-              <a href="mailto:kashishbasreja.fss22@gmail.com" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><Mail size={22}/></a>
+              <a href="mailto:kashishbasreja.fss22@gmail.com" className="p-3 bg-transparent rounded-xl border border-white/20 transition text-white hover:border-blue-500 hover:text-blue-400"><Mail size={22} /></a>
             </div>
-            <a 
-              href="/cv.pdf" 
+            <a
+              href="/cv.pdf"
               download="Kashish_CV.pdf"
               className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] flex items-center justify-center gap-2 hover:-translate-y-1 w-max"
             >
@@ -274,10 +289,10 @@ const Portfolio = () => {
         {/* Profile Image */}
         <div className="w-full max-w-[250px] md:max-w-[320px] shrink-0 z-10 relative flex items-center justify-center mx-auto lg:mx-0">
           <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-2xl animate-pulse-slow"></div>
-          <img 
-            src="/me.jpg" 
-            alt="Kashish" 
-            className="w-full aspect-square object-cover rounded-3xl border border-white/10 shadow-2xl transition-transform hover:scale-105 duration-500 ease-in-out relative z-10 bg-slate-900" 
+          <img
+            src="/me.jpg"
+            alt="Kashish"
+            className="w-full aspect-square object-cover rounded-3xl border border-white/10 shadow-2xl transition-transform hover:scale-105 duration-500 ease-in-out relative z-10 bg-slate-900"
           />
         </div>
       </section>
@@ -286,11 +301,11 @@ const Portfolio = () => {
       <section id="about" className="py-20 px-6 max-w-5xl mx-auto scroll-mt-24">
         <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          
+
           <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
-            <User size={32} className="text-blue-500"/> About Me
+            <User size={32} className="text-blue-500" /> About Me
           </h3>
-          
+
           <div className="space-y-6 text-slate-300 text-sm md:text-base leading-relaxed relative z-10">
             <p>
               I am a Final Year Computer Science student with a strong passion for Artificial Intelligence, Machine Learning, and building intelligent, real-world solutions. Throughout my academic journey, I have developed a solid foundation in programming and problem-solving, working with technologies such as Python, C++, Java, and MySQL. My interest in AI and research has led me to explore advanced domains, and I am currently working on an EEG-based Emotion Recognition system as part of my Final Year Project, focusing on developing models that interpret human emotions from brain signals.
@@ -351,7 +366,7 @@ const Portfolio = () => {
 
       {/* Tech Stack */}
       <section id="skills" className="py-16 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Layers size={32} className="text-blue-500"/> Tech Stack</h3>
+        <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Layers size={32} className="text-blue-500" /> Tech Stack</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition">
@@ -371,7 +386,7 @@ const Portfolio = () => {
       {/* Experience & Volunteership */}
       <section id="experience" className="py-16 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 scroll-mt-24">
         <div>
-          <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Briefcase size={32} className="text-blue-500"/> Experience</h3>
+          <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><Briefcase size={32} className="text-blue-500" /> Experience</h3>
           <div className="space-y-8">
             {experience.map((exp, i) => (
               <div key={i} className="relative pl-8 border-l border-slate-800 hover:border-blue-500 transition-colors duration-300">
@@ -387,7 +402,7 @@ const Portfolio = () => {
         </div>
 
         <div>
-          <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><HeartHandshake size={32} className="text-emerald-500"/> Volunteership</h3>
+          <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-3"><HeartHandshake size={32} className="text-emerald-500" /> Volunteership</h3>
           <div className="space-y-8">
             {volunteership.map((vol, i) => (
               <div key={i} className="relative pl-8 border-l border-slate-800 hover:border-emerald-500 transition-colors duration-300">
@@ -405,15 +420,15 @@ const Portfolio = () => {
 
       {/* Projects */}
       <section id="projects" className="py-20 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3"><Layout size={32} className="text-blue-500"/> Featured Projects</h3>
+        <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3"><Layout size={32} className="text-blue-500" /> Featured Projects</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((p, i) => (
             <div key={i} className="group rounded-3xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all overflow-hidden flex flex-col shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
               <div className="h-56 w-full bg-slate-900/50 flex items-center justify-center p-4 overflow-hidden relative">
-                <img 
-                  src={p.src} 
-                  alt={p.title} 
-                  className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out drop-shadow-2xl" 
+                <img
+                  src={p.src}
+                  alt={p.title}
+                  className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out drop-shadow-2xl"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col bg-gradient-to-b from-transparent to-black/20">
@@ -433,7 +448,7 @@ const Portfolio = () => {
 
       {/* Achievements */}
       <section id="achievements" className="py-20 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3"><Award size={32} className="text-yellow-500"/> Awards & Achievements</h3>
+        <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3"><Award size={32} className="text-yellow-500" /> Awards & Achievements</h3>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="rounded-3xl bg-white/5 border border-white/10 p-6 flex flex-col hover:border-yellow-500/50 transition-all">
             <div className="h-48 w-full bg-black/20 rounded-xl mb-6 flex items-center justify-center overflow-hidden p-2 relative">
@@ -465,7 +480,7 @@ const Portfolio = () => {
       <section id="contact" className="py-20 px-6 max-w-7xl mx-auto scroll-mt-24">
         <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
-          
+
           <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div>
               <h3 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
@@ -474,23 +489,23 @@ const Portfolio = () => {
               <p className="text-slate-400 mb-10 text-lg leading-relaxed">
                 I&apos;m currently open to new opportunities, AI research collaborations, and full-stack development roles. Whether you have a project in mind or just want to say hi, my inbox is always open!
               </p>
-              
+
               <div className="space-y-6">
                 <a href="mailto:kashishbasreja.fss22@gmail.com" className="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition group">
                   <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition">
-                    <Mail size={20}/>
+                    <Mail size={20} />
                   </div>
                   kashishbasreja.fss22@gmail.com
                 </a>
                 <a href="https://www.linkedin.com/in/kashish-aienthusiast" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition group">
                   <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition">
-                    <FaLinkedin size={20}/>
+                    <FaLinkedin size={20} />
                   </div>
                   LinkedIn Profile
                 </a>
               </div>
             </div>
-            
+
             <form action="https://formspree.io/f/xbdqgqgl" method="POST" className="space-y-6 bg-[#0a1128]/50 p-6 rounded-2xl border border-white/5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">Your Name</label>
