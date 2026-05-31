@@ -321,7 +321,7 @@ const Portfolio = () => {
             </p>
             <p className="font-medium text-slate-200">
               Feel free to connect with me on LinkedIn or reach out via email at <a href="mailto:kashishbasreja.fss22@gmail.com" className="text-blue-400 hover:underline">kashishbasreja.fss22@gmail.com</a> for collaborations, opportunities, or discussions in AI and technology.
-            </p>
+            </p> 
           </div>
         </div>
       </section>
