@@ -19,7 +19,7 @@ const Portfolio = () => {
 
   // --- TYPING EFFECT LOGIC ---
   useEffect(() => {
-    const titles = ["AI Researcher", "Web Developer", "AI/ML Engineer", "WordPress Developer", "Deep Learning Engineer"];
+    const titles = ["AI Engineer", "AI Researcher", "ML Engineer", "Software Developer", "Deep Learning Engineer"];
     const typeSpeed = isDeleting ? 50 : 100; // 50ms for deleting, 100ms for typing
     const currentFullText = titles[titleIndex];
 
@@ -60,9 +60,9 @@ const Portfolio = () => {
       ]
     },
     {
-      role: "WordPress Developer",
+      role: "WordPress Developer Intern",
       company: "Students Empowered Oasis",
-      date: "Jul 2024 – Aug 2024",
+      date: "Jul 2024 – Sep 2024",
       points: [
         "Built and managed WordPress websites using pre-built themes and standard tools.",
         "Customized pages, layouts, and content, ensuring responsive design and user-friendly interfaces.",
@@ -73,10 +73,10 @@ const Portfolio = () => {
 
   const volunteership = [
     {
-      role: "Executive Member",
+      role: "Executive Committee Member",
       company: "Computer Science Society, Sukkur IBA",
       date: "Oct 2025 – May 2026",
-      points: ["Participating in planning academic events and collaborating to increase student engagement in computing activities."]
+      points: ["Participated in planning academic events, managing logistics, and collaborating to increase student engagement in computing activities."]
     },
     {
       role: "Web Developer",
@@ -90,7 +90,7 @@ const Portfolio = () => {
     {
       role: "Active Member",
       company: "SIBA Tech Club, Sukkur IBA",
-      date: "Dec 2024 – Aug 2025",
+      date: "Dec 2024 – May 2026",
       points: ["Contributed to organizing technical events, hackathons, and volunteered for TechThon operations."]
     }
   ];
@@ -98,7 +98,7 @@ const Portfolio = () => {
   const projects = [
     {
       title: "NeuroEmotion",
-      desc: "EEG-based affective computing platform for real-time multi-user emotion prediction.",
+      desc: "An EEG-based affective computing platform for real-time emotion prediction featuring two distinct modules: one for processing EEG brainwave signals and another for analyzing facial expressions.",
       tech: ["Deep Learning", "Flutter", "Flask"],
       src: "/neuroemotion.png",
       link: "https://github.com/NeuroEmotion"
@@ -136,7 +136,7 @@ const Portfolio = () => {
       desc: "Real-time gesture recognition (ASL, BSL, ISL) using computer vision and 5 custom-trained CNN models with 90%+ accuracy.",
       tech: ["OpenCV", "MediaPipe", "CNN", "gTTS"],
       src: "/gesture.png",
-      link: "https://github.com/KashishTheCoder"
+      link: "https://github.com/KaranTejwani/GestureDetection.git"
     },
     {
       title: "Content Management System",
@@ -302,26 +302,46 @@ const Portfolio = () => {
         <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
+          {/* About Me Title */}
           <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
             <User size={32} className="text-blue-500" /> About Me
           </h3>
 
+          {/* New Personal Narrative Copy */}
           <div className="space-y-6 text-slate-300 text-sm md:text-base leading-relaxed relative z-10">
             <p>
-              I am a Final Year Computer Science student with a strong passion for Artificial Intelligence, Machine Learning, and building intelligent, real-world solutions. Throughout my academic journey, I have developed a solid foundation in programming and problem-solving, working with technologies such as Python, C++, Java, and MySQL. My interest in AI and research has led me to explore advanced domains, and I am currently working on an EEG-based Emotion Recognition system as part of my Final Year Project, focusing on developing models that interpret human emotions from brain signals.
+              I’m a recent Computer Science graduate from Sukkur IBA University, specializing in AI, machine learning, and software development. For me, tech isn't just about writing code; it’s about finding smart ways to solve real-world problems.
             </p>
             <p>
-              I have gained hands-on experience through internships and projects in both AI/ML and Web Development. I have worked as a Web Developer Intern at SEPCO and as a WordPress Developer Intern, where I built and managed responsive websites using industry-standard tools. Alongside this, I have developed multiple projects in Machine Learning and Deep Learning, strengthening my technical expertise as well as soft skills such as teamwork, communication, and adaptability. I have also contributed to research, and one of my papers has been accepted at the iCoMET research conference, marking an important milestone in my academic journey.
+              During my time at university, I focused heavily on building practical systems and diving into AI research. Some of my defining work includes:
+            </p>
+            <ul className="list-none space-y-4 pl-0">
+              <li className="flex gap-2 items-start">
+                <span className="text-blue-500 mt-1">•</span>
+                <span><strong>NeuroEmotion:</strong> For my Final Year Project, I developed a bimodal emotion recognition system featuring two distinct modules: one that analyzes human emotional states using EEG brainwave signals, and another that processes facial expressions.</span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <span className="text-blue-500 mt-1">•</span>
+                <span><strong>AI Research:</strong> I recently presented my paper, <em>"Reducing Unsafe Mental Health Advice in LLMs Using Safety-Aware Prompting,"</em> at the <strong>iCoMET 2026</strong> conference, focusing on making large language models safer and more reliable.</span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <span className="text-blue-500 mt-1">•</span>
+                <span><strong>Software & Mobile Development:</strong> Alongside AI, I love building complete products. I developed <em>Bespoke Threads</em>, a Kotlin-based mobile marketplace for customized clothing, and built deep learning models (using PyTorch and ResNet) for multi-label medical image classification.</span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <span className="text-blue-500 mt-1">•</span>
+                <span><strong>Industry Experience:</strong> I gained hands-on development experience through internships at SEPCO and Students Empowered Oasis, which taught me how to deliver real solutions on a timeline.</span>
+              </li>
+            </ul>
+            <p>
+              Outside of classes, I spent a lot of time giving back to the campus community. Serving as an executive member of the Computer Science Society and being part of the SIBA Tech Club allowed me to organize events, mentor peers, and help build a strong tech culture on campus.
             </p>
             <p>
-              Beyond technical work, I actively contribute to student communities as an Active Member of the SIBA Tech Club and an Executive Committee Member of the Computer Science Society. Through these roles, I have participated in organizing events, supporting technical initiatives, and fostering collaborative learning environments.
+              Now that I've wrapped up my final exams, I am actively looking for full-time opportunities as an <strong>AI Engineer, Machine Learning Engineer, or Software Developer</strong>. I'm eager to join a team where I can keep learning, writing clean code, and building intelligent systems.
             </p>
-            <p>
-              I am currently seeking internship and entry-level opportunities in AI, Machine Learning, and Software Development, where I can apply my skills, contribute to impactful projects, and continue growing as a developer and researcher. My goal is to build intelligent and scalable systems that solve real-world problems and create meaningful impact.
+            <p className="font-medium text-slate-200 pt-2">
+              Let’s connect! Feel free to reach out here on LinkedIn or drop me a line via email at <a href="mailto:kashishbasreja.fss22@gmail.com" className="text-blue-400 hover:underline">kashishbasreja.fss22@gmail.com</a> to talk about open roles, collaborations, or anything tech-related.
             </p>
-            <p className="font-medium text-slate-200">
-              Feel free to connect with me on LinkedIn or reach out via email at <a href="mailto:kashishbasreja.fss22@gmail.com" className="text-blue-400 hover:underline">kashishbasreja.fss22@gmail.com</a> for collaborations, opportunities, or discussions in AI and technology.
-            </p> 
           </div>
         </div>
       </section>
@@ -353,7 +373,7 @@ const Portfolio = () => {
             <h3 className="text-2xl font-bold text-white">Research Publication</h3>
           </div>
           <div className="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-wider rounded-md mb-4 border border-purple-500/30">
-            Accepted - iCoMET 2026
+            Presented - iCoMET 2026
           </div>
           <h4 className="text-lg md:text-xl font-bold text-white leading-snug mb-4">
             "Reducing Unsafe Mental Health Advice in Large Language Models Using Safety-Aware Prompting"
