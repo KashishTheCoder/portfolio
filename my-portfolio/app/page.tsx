@@ -162,7 +162,7 @@ const Portfolio = () => {
       issuer: "International Conference on Computing, Mathematics, Engineering, and Technology",
       date: "May 2026",
       image: "/certificates/images/iCoMETAuthor.png",
-      pdf: "/certificates/pdfs/iCoMETAuthor.pdf", // If you decide to map PDF later
+      pdf: "/certificates/images/iCoMETAuthor.png", // If you decide to map PDF later
       verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_research-academicconference-icomet2026-ugcPost-7470600511277387776-Xy_h/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
       skills: ["Academic Writing", "AI Research", "Explainable AI"]
     },
@@ -171,7 +171,7 @@ const Portfolio = () => {
       issuer: "International Conference on Computing, Mathematics, Engineering, and Technology",
       date: "May 2026",
       image: "/certificates/images/iCoMETPresenter.png",
-      pdf: "/certificates/pdfs/iCoMETPresenter.pdf",
+      pdf: "/certificates/images/iCoMETPresenter.png",
       verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_research-academicconference-icomet2026-ugcPost-7470600511277387776-Xy_h/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
       skills: ["Public Speaking", "Research Presentation", "Safety-Aware Prompting"]
     },
@@ -180,7 +180,7 @@ const Portfolio = () => {
       issuer: "Sukkur IBA University",
       date: "September 2024",
       image: "/certificates/images/sibafest.jpg",
-      pdf: "/certificates/pdfs/sibafest.pdf",
+      pdf: "/certificates/images/sibafest.jpg",
       verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_sibafest-techinnovation-codingchallenge-activity-7237497602684973058-bT7r?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
       skills: ["Competitive Programming", "Data Structures", "Algorithms"],
       highlight: true
@@ -249,7 +249,7 @@ const Portfolio = () => {
       issuer: "LinkedIn Learning",
       date: "June 2024",
       image: "/certificates/images/js-essential-training.jpg",
-      pdf: "/certificates/pdfs/js-essential-training.pdf",
+      pdf: "/certificates/images/js-essential-training.jpg",
       verifyUrl: "https://www.linkedin.com/learning/certificates/6024ed474429b1fba8c910073021d91a510de17ea671e8115e84c05112c14f8b",
       skills: ["ES6+", "DOM Manipulation", "Asynchronous JavaScript"]
     },
@@ -258,7 +258,7 @@ const Portfolio = () => {
       issuer: "LinkedIn Learning",
       date: "June 2024",
       image: "/certificates/images/js-oop.jpg",
-      pdf: "/certificates/pdfs/js-oop.pdf",
+      pdf: "/certificates/images/js-oop.jpg",
       verifyUrl: "https://www.linkedin.com/learning/certificates/3a534547b6d05dbd363f610762013528e9a7a0d554df005ce55bf223fa69a061?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BUeIaBuHtSpC7k%2FYtR7E7Yw%3D%3D",
       skills: ["OOP Design Patterns", "Classes", "Prototypal Inheritance"]
     },
@@ -267,7 +267,7 @@ const Portfolio = () => {
       issuer: "LinkedIn Learning",
       date: "July 2024",
       image: "/certificates/images/js-second-language.jpg",
-      pdf: "/certificates/pdfs/js-second-language.pdf",
+      pdf: "/certificates/images/js-second-language.jpg",
       verifyUrl: "https://www.linkedin.com/learning/certificates/3f4e91dfeb9ad7a59a69439a461bfb2bc7fce558f3a6979639f4311e7ab6da51?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BEisz5lELTWqjZc0WdwPDzA%3D%3D",
       skills: ["Problem Solving", "Logic Optimization", "Clean Code Architecture"]
     },
@@ -276,7 +276,7 @@ const Portfolio = () => {
       issuer: "LinkedIn Learning",
       date: "July 2024",
       image: "/certificates/images/level-up-js.jpg",
-      pdf: "/certificates/pdfs/level-up-js.pdf",
+      pdf: "/certificates/images/level-up-js.jpg",
       verifyUrl: "https://www.linkedin.com/learning/certificates/9680b936c99a5cfee22ea553a7ad26f94c405335b82915fdecf6e91c9590458c?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BUeIaBuHtSpC7k%2FYtR7E7Yw%3D%3D",
       skills: ["Advanced Paradigms", "Performance Tuning", "Functional JS"]
     },
@@ -285,7 +285,7 @@ const Portfolio = () => {
       issuer: "Educate Sindh",
       date: "September 2024",
       image: "/certificates/images/wordpress.jpg",
-      pdf: "/certificates/pdfs/wordpress.pdf",
+      pdf: "/certificates/images/wordpress.jpg",
       verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_wordpress-webdevelopment-educatesindh-activity-7237525211988819969-vLzt?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
       skills: ["CMS Design", "Theme Engineering", "Platform Deployment"]
     },
@@ -294,7 +294,7 @@ const Portfolio = () => {
       issuer: "Educate Sindh",
       date: "September 2024",
       image: "/certificates/images/html-css.jpg",
-      pdf: "/certificates/pdfs/html-css.pdf",
+      pdf: "/certificates/images/html-css.jpg",
       verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_webdevelopment-html-css-activity-7237521336808439808-6tsc?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
       skills: ["Responsive UI Layouts", "CSS Grid/Flexbox", "Semantic Coding"]
     }
@@ -674,7 +674,7 @@ const Portfolio = () => {
                     <ExternalLink size={12} /> Verify
                   </a>
                   <a href={cert.pdf} download className="px-3 py-2 bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition border border-blue-500/30">
-                    <Download size={12} /> PDF
+                    <Download size={12} /> Certificate
                   </a>
                 </div>
               </div>
