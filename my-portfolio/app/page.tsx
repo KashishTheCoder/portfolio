@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Mail, ExternalLink, GraduationCap, Award, BookOpen,
   Briefcase, HeartHandshake, Code, Layout, Send, Download,
-  Menu, X, Layers, User
+  Menu, X, Layers, User, ChevronDown, ChevronUp, FileText, CheckCircle
 } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
@@ -17,22 +17,23 @@ const Portfolio = () => {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // --- CERTIFICATES STATES ---
+  const [activeTab, setActiveTab] = useState('research'); // research | ai | web
+  const [expandedSpecialization, setExpandedSpecialization] = useState<string | null>(null);
+
   // --- TYPING EFFECT LOGIC ---
   useEffect(() => {
     const titles = ["AI Engineer", "AI Researcher", "ML Engineer", "Software Developer", "Deep Learning Engineer"];
-    const typeSpeed = isDeleting ? 50 : 100; // 50ms for deleting, 100ms for typing
+    const typeSpeed = isDeleting ? 50 : 100;
     const currentFullText = titles[titleIndex];
 
     const timer = setTimeout(() => {
       if (!isDeleting && currentText === currentFullText) {
-        // Pause at the end of the word before starting to delete
         setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && currentText === '') {
-        // Move to the next word once fully deleted
         setIsDeleting(false);
         setTitleIndex((prev) => (prev + 1) % titles.length);
       } else {
-        // Add or remove a character
         setCurrentText(currentFullText.substring(0, currentText.length + (isDeleting ? -1 : 1)));
       }
     }, typeSpeed);
@@ -154,6 +155,155 @@ const Portfolio = () => {
     }
   ];
 
+  // --- CERTIFICATE DATA STRUCTURES ---
+  const academicCerts = [
+    {
+      title: "Certificate of Authorship - 5th iCoMET 2026",
+      issuer: "International Conference on Computing, Mathematics, Engineering, and Technology",
+      date: "May 2026",
+      image: "/certificates/images/iCoMETAuthor.png",
+      pdf: "/certificates/pdfs/iCoMETAuthor.pdf", // If you decide to map PDF later
+      verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_research-academicconference-icomet2026-ugcPost-7470600511277387776-Xy_h/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
+      skills: ["Academic Writing", "AI Research", "Explainable AI"]
+    },
+    {
+      title: "Certificate of Presenter - 5th iCoMET 2026",
+      issuer: "International Conference on Computing, Mathematics, Engineering, and Technology",
+      date: "May 2026",
+      image: "/certificates/images/iCoMETPresenter.png",
+      pdf: "/certificates/pdfs/iCoMETPresenter.pdf",
+      verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_research-academicconference-icomet2026-ugcPost-7470600511277387776-Xy_h/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
+      skills: ["Public Speaking", "Research Presentation", "Safety-Aware Prompting"]
+    },
+    {
+      title: "SibaFest Speed Programming Winner",
+      issuer: "Sukkur IBA University",
+      date: "September 2024",
+      image: "/certificates/images/sibafest.jpg",
+      pdf: "/certificates/pdfs/sibafest.pdf",
+      verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_sibafest-techinnovation-codingchallenge-activity-7237497602684973058-bT7r?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
+      skills: ["Competitive Programming", "Data Structures", "Algorithms"],
+      highlight: true
+    }
+  ];
+
+  const aiSpecializations = [
+    {
+      id: "google-ai",
+      title: "Google AI Essentials Specialization",
+      issuer: "Google (via Coursera)",
+      date: "May 2026",
+      pdf: "/certificates/pdfs/GoogleAIEssentialsSpecializationKashish.pdf",
+      verifyUrl: "https://coursera.org/share/eebe4939edfdbd15099f77847d86705d",
+      skills: ["Generative AI", "AI Productivity Tools", "Responsible AI"],
+      isSpecialization: true,
+      courses: [
+        { title: "Introduction to AI", file: "KashishAICourse1.pdf", url: "https://coursera.org/share/8db6391450264901c2e8d31423daad89" },
+        { title: "Maximize Productivity with AI Tools", file: "KashishAICourse2.pdf", url: "https://coursera.org/share/8bc47af7d1dedf18c81daa0cd8a44cb4" },
+        { title: "Discover the Art of Prompting", file: "KashishAICourse3.pdf", url: "https://coursera.org/share/4d71abd5bee98964830b36dac1b4f3b7" },
+        { title: "Use AI Responsibly", file: "KashishAICourse4.pdf", url: "https://coursera.org/share/fda1d4c688e28f9598f224a6e6bd9082" },
+        { title: "Stay Ahead of the AI Curve", file: "KashishAICourse5.pdf", url: "https://coursera.org/share/f36b04deebca0732393888952b0c3ce5" }
+      ]
+    },
+    {
+      id: "google-prompting",
+      title: "Google Prompting Essentials Specialization",
+      issuer: "Google (via Coursera)",
+      date: "June 2026",
+      pdf: "/certificates/pdfs/GooglePromptingEssentialsSpecializationKashish.pdf",
+      verifyUrl: "https://coursera.org/share/e4688e9df6561c8ea3298a51d95f3fdc",
+      skills: ["Advanced Prompt Engineering", "Data Analysis Automation", "Workflow Optimization"],
+      isSpecialization: true,
+      courses: [
+        { title: "Start Writing Prompts like a Pro", file: "KashishPromptingCourse1.pdf", url: "https://coursera.org/share/e834d4abd7b0737cca08936bab40c295" },
+        { title: "Use AI as a Creative or Expert Partner", file: "KashishPromptingCourse2.pdf", url: "https://coursera.org/share/7ed38e61974ad59ee3b9b99e8eaa863c" },
+        { title: "Design Prompts for Everyday Work Tasks", file: "KashishPromptingCourse3.pdf", url: "https://coursera.org/share/56ae90a197adb4b5a9785320f2608cc3" },
+        { title: "Speed Up Data Analysis and Presentation Building", file: "KashishPromptingCourse4.pdf", url: "https://coursera.org/share/1f4f7815ed6085b444e8ac41fd0865ef" }
+      ]
+    },
+    {
+      id: "ai-for-everyone",
+      title: "AI for Everyone",
+      issuer: "DeepLearning.AI (Coursera) — Taught by Andrew Ng",
+      date: "January 2025",
+      pdf: "/certificates/pdfs/KashishAIForEveryoneAndrewNg.pdf",
+      verifyUrl: "https://coursera.org/share/4eedcff9b22a012a3e7031c9b6233855",
+      skills: ["AI Strategy", "Machine Learning Workflows", "Organizational Transformation"],
+      isSpecialization: false
+    },
+    {
+      id: "meta-python",
+      title: "Programming in Python",
+      issuer: "Meta (via Coursera)",
+      date: "April 2025",
+      pdf: "/certificates/pdfs/KashishMetaPython.pdf",
+      verifyUrl: "https://coursera.org/share/223f9b993131beb941e7f6637b3ac605",
+      skills: ["Object-Oriented Python", "Data Processing", "Scripting & Testing"],
+      isSpecialization: false
+    }
+  ];
+
+  const webEngineeringCerts = [
+    {
+      title: "JavaScript Essential Training",
+      issuer: "LinkedIn Learning",
+      date: "June 2024",
+      image: "/certificates/images/js-essential-training.jpg",
+      pdf: "/certificates/pdfs/js-essential-training.pdf",
+      verifyUrl: "https://www.linkedin.com/learning/certificates/6024ed474429b1fba8c910073021d91a510de17ea671e8115e84c05112c14f8b",
+      skills: ["ES6+", "DOM Manipulation", "Asynchronous JavaScript"]
+    },
+    {
+      title: "JavaScript Practice: Object-Oriented Programming",
+      issuer: "LinkedIn Learning",
+      date: "June 2024",
+      image: "/certificates/images/js-oop.jpg",
+      pdf: "/certificates/pdfs/js-oop.pdf",
+      verifyUrl: "https://www.linkedin.com/learning/certificates/3a534547b6d05dbd363f610762013528e9a7a0d554df005ce55bf223fa69a061?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BUeIaBuHtSpC7k%2FYtR7E7Yw%3D%3D",
+      skills: ["OOP Design Patterns", "Classes", "Prototypal Inheritance"]
+    },
+    {
+      title: "JavaScript as a Second Language",
+      issuer: "LinkedIn Learning",
+      date: "July 2024",
+      image: "/certificates/images/js-second-language.jpg",
+      pdf: "/certificates/pdfs/js-second-language.pdf",
+      verifyUrl: "https://www.linkedin.com/learning/certificates/3f4e91dfeb9ad7a59a69439a461bfb2bc7fce558f3a6979639f4311e7ab6da51?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BEisz5lELTWqjZc0WdwPDzA%3D%3D",
+      skills: ["Problem Solving", "Logic Optimization", "Clean Code Architecture"]
+    },
+    {
+      title: "Level Up: JavaScript",
+      issuer: "LinkedIn Learning",
+      date: "July 2024",
+      image: "/certificates/images/level-up-js.jpg",
+      pdf: "/certificates/pdfs/level-up-js.pdf",
+      verifyUrl: "https://www.linkedin.com/learning/certificates/9680b936c99a5cfee22ea553a7ad26f94c405335b82915fdecf6e91c9590458c?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BUeIaBuHtSpC7k%2FYtR7E7Yw%3D%3D",
+      skills: ["Advanced Paradigms", "Performance Tuning", "Functional JS"]
+    },
+    {
+      title: "Web Development with WordPress",
+      issuer: "Educate Sindh",
+      date: "September 2024",
+      image: "/certificates/images/wordpress.jpg",
+      pdf: "/certificates/pdfs/wordpress.pdf",
+      verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_wordpress-webdevelopment-educatesindh-activity-7237525211988819969-vLzt?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
+      skills: ["CMS Design", "Theme Engineering", "Platform Deployment"]
+    },
+    {
+      title: "Web Development with HTML & CSS",
+      issuer: "Educate Sindh",
+      date: "September 2024",
+      image: "/certificates/images/html-css.jpg",
+      pdf: "/certificates/pdfs/html-css.pdf",
+      verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_webdevelopment-html-css-activity-7237521336808439808-6tsc?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4",
+      skills: ["Responsive UI Layouts", "CSS Grid/Flexbox", "Semantic Coding"]
+    }
+  ];
+
+  const toggleSpecialization = (id: string) => {
+    setExpandedSpecialization(expandedSpecialization === id ? null : id);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1128] via-slate-950 to-[#0a1128] text-slate-300 font-sans selection:bg-blue-500/30 overflow-x-hidden">
 
@@ -205,6 +355,7 @@ const Portfolio = () => {
             <a href="#skills" className="hover:text-blue-400 transition">Skills</a>
             <a href="#experience" className="hover:text-blue-400 transition">Experience</a>
             <a href="#projects" className="hover:text-blue-400 transition">Projects</a>
+            <a href="#credentials" className="hover:text-blue-400 transition">Credentials</a>
             <a href="#achievements" className="hover:text-blue-400 transition">Achievements</a>
             <a href="#contact" className="hover:text-blue-400 transition">Contact</a>
           </div>
@@ -227,6 +378,7 @@ const Portfolio = () => {
             <a href="#skills" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Skills</a>
             <a href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Experience</a>
             <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Projects</a>
+            <a href="#credentials" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Credentials</a>
             <a href="#achievements" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition">Achievements</a>
             <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium hover:text-blue-400 transition text-blue-400">Contact</a>
           </div>
@@ -307,7 +459,7 @@ const Portfolio = () => {
             <User size={32} className="text-blue-500" /> About Me
           </h3>
 
-          {/* New Personal Narrative Copy */}
+          {/* Narrative Copy */}
           <div className="space-y-6 text-slate-300 text-sm md:text-base leading-relaxed relative z-10">
             <p>
               I’m a recent Computer Science graduate from Sukkur IBA University, specializing in AI, machine learning, and software development. For me, tech isn't just about writing code; it’s about finding smart ways to solve real-world problems.
@@ -464,6 +616,167 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* --- NEW CREDENTIALS & CERTIFICATIONS SECTION --- */}
+      <section id="credentials" className="py-20 px-6 max-w-7xl mx-auto scroll-mt-24">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+          <div>
+            <h3 className="text-3xl font-bold text-white flex items-center gap-3">
+              <CheckCircle size={32} className="text-blue-500" /> Professional Credentials
+            </h3>
+            <p className="text-sm text-slate-400 mt-2">Verified courses, engineering tracks, and academic conference accomplishments.</p>
+          </div>
+
+          {/* Navigation Tabs */}
+          <div className="flex bg-slate-900 p-1 rounded-xl border border-white/10 w-full md:w-auto overflow-x-auto whitespace-nowrap">
+            <button
+              onClick={() => setActiveTab('research')}
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all ${activeTab === 'research' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}
+            >
+              Research & Honors
+            </button>
+            <button
+              onClick={() => setActiveTab('ai')}
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all ${activeTab === 'ai' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}
+            >
+              AI & Machine Learning
+            </button>
+            <button
+              onClick={() => setActiveTab('web')}
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all ${activeTab === 'web' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}
+            >
+              Web Engineering
+            </button>
+          </div>
+        </div>
+
+        {/* Tab 1: Research & Honors */}
+        {activeTab === 'research' && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+            {academicCerts.map((cert, index) => (
+              <div key={index} className={`rounded-2xl border bg-white/[0.02] p-5 flex flex-col justify-between transition-all hover:-translate-y-1 ${cert.highlight ? 'border-yellow-500/40 shadow-[0_0_20px_rgba(234,179,8,0.05)]' : 'border-white/10 hover:border-blue-500/40'}`}>
+                <div>
+                  <div className="h-44 bg-slate-950/60 rounded-xl mb-4 flex items-center justify-center p-2 overflow-hidden border border-white/5">
+                    <img src={cert.image} alt={cert.title} className="max-w-full max-h-full object-contain rounded" />
+                  </div>
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-base font-bold text-white leading-snug">{cert.title}</h4>
+                  </div>
+                  <p className="text-xs text-blue-400 font-medium mb-1">{cert.issuer}</p>
+                  <p className="text-[11px] text-slate-500 mb-4">{cert.date}</p>
+                  <div className="flex flex-wrap gap-1 mb-6">
+                    {cert.skills.map(s => <span key={s} className="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">{s}</span>)}
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-2 mt-auto">
+                  <a href={cert.verifyUrl} target="_blank" rel="noreferrer" className="px-3 py-2 bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition">
+                    <ExternalLink size={12} /> Verify
+                  </a>
+                  <a href={cert.pdf} download className="px-3 py-2 bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition border border-blue-500/30">
+                    <Download size={12} /> PDF
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Tab 2: AI & Machine Learning Tracks */}
+        {activeTab === 'ai' && (
+          <div className="space-y-6 max-w-4xl mx-auto animate-fadeIn">
+            {aiSpecializations.map((spec) => (
+              <div key={spec.id} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-blue-500/30">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                  <div className="flex gap-3 items-start">
+                    <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl mt-1 shrink-0">
+                      {spec.isSpecialization ? <Layers size={24} /> : <Code size={24} />}
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-white flex items-center gap-2 flex-wrap">
+                        {spec.title}
+                        {spec.isSpecialization && <span className="text-[10px] uppercase tracking-widest bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full border border-blue-500/30">Specialization</span>}
+                      </h4>
+                      <p className="text-xs text-blue-400 font-medium mt-0.5">{spec.issuer}</p>
+                      <p className="text-[11px] text-slate-500 mt-1">{spec.date}</p>
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {spec.skills.map(s => <span key={s} className="text-[10px] bg-slate-900 text-slate-400 border border-slate-800 px-2 py-0.5 rounded">{s}</span>)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 w-full sm:w-auto shrink-0 sm:mt-1">
+                    <a href={spec.verifyUrl} target="_blank" rel="noreferrer" className="flex-1 sm:flex-initial px-3 py-2 bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition">
+                      <ExternalLink size={12} /> Verify
+                    </a>
+                    <a href={spec.pdf} download className="flex-1 sm:flex-initial px-3 py-2 bg-blue-600 text-white hover:bg-blue-500 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition shadow-lg shadow-blue-600/10">
+                      <Download size={12} /> Full PDF
+                    </a>
+                    {spec.isSpecialization && (
+                      <button
+                        onClick={() => toggleSpecialization(spec.id)}
+                        className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg flex items-center justify-center gap-1 transition"
+                      >
+                        {expandedSpecialization === spec.id ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                        Courses ({spec.courses?.length})
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Sub-courses Nested Drawer */}
+                {spec.isSpecialization && expandedSpecialization === spec.id && (
+                  <div className="mt-6 pt-6 border-t border-white/5 bg-black/20 rounded-xl p-4 space-y-3 animate-slideDown">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Curriculum Certificates Included:</p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {spec.courses?.map((course, cIdx) => (
+                        <div key={cIdx} className="flex justify-between items-center bg-slate-900/80 p-3 rounded-lg border border-white/5 hover:border-slate-700 transition">
+                          <div className="flex items-center gap-2.5 overflow-hidden">
+                            <FileText size={14} className="text-slate-500 shrink-0" />
+                            <span className="text-xs text-slate-300 font-medium truncate pr-2">{course.title}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <a href={course.url} target="_blank" rel="noreferrer" className="p-1.5 text-slate-400 hover:text-blue-400 transition" title="Verify Online"><ExternalLink size={12} /></a>
+                            <a href={`/certificates/pdfs/${course.file}`} download className="p-1.5 text-slate-400 hover:text-white transition" title="Download Certificate"><Download size={12} /></a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Tab 3: Web Engineering & Core Skills */}
+        {activeTab === 'web' && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+            {webEngineeringCerts.map((cert, index) => (
+              <div key={index} className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 flex flex-col justify-between transition-all hover:-translate-y-1 hover:border-blue-500/40">
+                <div>
+                  <div className="h-44 bg-slate-950/60 rounded-xl mb-4 flex items-center justify-center p-2 overflow-hidden border border-white/5">
+                    <img src={cert.image} alt={cert.title} className="max-w-full max-h-full object-contain rounded" />
+                  </div>
+                  <h4 className="text-base font-bold text-white leading-snug mb-1">{cert.title}</h4>
+                  <p className="text-xs text-blue-400 font-medium mb-1">{cert.issuer}</p>
+                  <p className="text-[11px] text-slate-500 mb-4">{cert.date}</p>
+                  <div className="flex flex-wrap gap-1 mb-6">
+                    {cert.skills.map(s => <span key={s} className="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded">{s}</span>)}
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-2 mt-auto">
+                  <a href={cert.verifyUrl} target="_blank" rel="noreferrer" className="px-3 py-2 bg-slate-900 border border-slate-700 hover:border-slate-500 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition">
+                    <ExternalLink size={12} /> Verify
+                  </a>
+                  <a href={cert.pdf} download className="px-3 py-2 bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 text-xs font-semibold rounded-lg text-center flex items-center justify-center gap-1.5 transition border border-blue-500/30">
+                    <Download size={12} /> PDF
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Achievements */}
