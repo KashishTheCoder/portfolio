@@ -519,16 +519,24 @@ const Portfolio = () => {
         </div>
 
         {/* Research Publication */}
-        <div id="research" className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition shadow-lg">
+        <div id="research" className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition shadow-lg group">
           <div className="flex items-center gap-3 mb-6 text-purple-400">
             <BookOpen size={28} />
             <h3 className="text-2xl font-bold text-white">Research Publication</h3>
           </div>
           <div className="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-wider rounded-md mb-4 border border-purple-500/30">
-            Presented - iCoMET 2026
+            Published - iCoMET 2026
           </div>
           <h4 className="text-lg md:text-xl font-bold text-white leading-snug mb-4">
-            "Reducing Unsafe Mental Health Advice in Large Language Models Using Safety-Aware Prompting"
+            <a
+              href="https://ieeexplore.ieee.org/document/11591507"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-purple-400 transition-colors inline-flex items-center gap-2"
+            >
+              "Reducing Unsafe Mental Health Advice in Large Language Models Using Safety-Aware Prompting"
+              <ExternalLink size={18} className="text-slate-500 group-hover:text-purple-400 shrink-0" />
+            </a>
           </h4>
           <p className="text-slate-400 text-sm md:text-base">
             Focuses on enhancing the safety constraints of LLMs to prevent the generation of harmful or inappropriate mental health advice.
@@ -618,7 +626,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* --- NEW CREDENTIALS & CERTIFICATIONS SECTION --- */}
+      {/* --- CREDENTIALS & CERTIFICATIONS SECTION --- */}
       <section id="credentials" className="py-20 px-6 max-w-7xl mx-auto scroll-mt-24">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
