@@ -51,6 +51,16 @@ const Portfolio = () => {
 
   const experience = [
     {
+      role: "Research Collaborator",
+      company: "AI/ML Research Group",
+      date: "Aug 2026 – Present",
+      points: [
+        "Conducting comprehensive literature reviews, rigorous experiments, and academic writing for AI, ML, Deep Learning, and NLP research papers.",
+        "Currently authoring and contributing to an in-progress research paper targeted at an academic journal.",
+        "Participating in weekly progress syncs and collaborative discussions to evaluate experimental findings and refine methodologies."
+      ]
+    },
+    {
       role: "Web Development Intern",
       company: "Sukkur Electric Power Company (SEPCO)",
       date: "Jun 2025 – Jul 2025",
