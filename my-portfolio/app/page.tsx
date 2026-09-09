@@ -52,7 +52,7 @@ const Portfolio = () => {
   const experience = [
     {
       role: "Research Collaborator",
-      company: "AI/ML Research Group",
+      company: "Deep-NLP.ai Research Group",
       date: "Aug 2026 – Present",
       points: [
         "Conducting comprehensive literature reviews, rigorous experiments, and academic writing for AI, ML, Deep Learning, and NLP research papers.",
@@ -518,7 +518,7 @@ const Portfolio = () => {
           <h4 className="text-xl font-bold text-white">BS Computer Science</h4>
           <p className="text-slate-400 mb-4">Sukkur IBA University | 2022 — 2026</p>
           <p className="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 text-sm font-bold rounded-md mb-4 border border-blue-500/30">
-            CGPA: 3.66
+            CGPA: 3.67
           </p>
           <div className="space-y-2">
             <p className="text-sm text-slate-300 font-medium">Key Coursework:</p>
