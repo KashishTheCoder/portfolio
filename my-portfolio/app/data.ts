@@ -9,15 +9,17 @@ export type Cert = {
 };
 
 export const skills: Record<string, string[]> = {
+  "AI & Research": ["Deep Learning", "Computer Vision", "NLP", "LLM Fine-Tuning (LoRA)", "Agentic AI", "Explainable AI", "Prompt Engineering", "Model Compression", "Quantization", "Edge AI", "Academic Writing"],
   Languages: ["C++", "Java", "Python", "SQL", "JavaScript", "HTML", "CSS", "Kotlin"],
-  Frameworks: ["React", "Node.js", "Express.js", "Flask", "Flutter", "NumPy", "Pandas", "Keras", "OpenCV", "TensorFlow", "PyTorch"],
-  Tools: ["Git", "GitHub", "Linux", "MongoDB", "VS Code", "IntelliJ IDEA", "PyCharm", "Canva", "WordPress"],
+  Frameworks: ["React", "Node.js", "Express.js", "Flask", "Flutter", "NumPy", "Pandas", "Keras", "OpenCV", "TensorFlow", "PyTorch", "MediaPipe"],
+  Tools: ["Git", "GitHub", "Linux", "MongoDB", "Firebase", "VS Code", "IntelliJ IDEA", "PyCharm", "LaTeX", "Canva", "WordPress"],
 };
 
 export const experience = [
   { role: "Research Collaborator", company: "Deep-NLP.ai Research Group", date: "Aug 2026 – Present", points: [
     "Conducting comprehensive literature reviews, rigorous experiments, and academic writing for AI, ML, Deep Learning, and NLP research papers.",
-    "Currently authoring and contributing to an in-progress research paper targeted at an academic journal.",
+    "Working on a research project in agentic AI, with the paper in progress for an academic journal.",
+    "Submitted my first journal paper, \"Edge-Agritech Vision: Two-Stage Cascaded 12-Class Sugarcane Disease Diagnosis on Resource-Constrained CPUs\", now under review.",
     "Participating in weekly progress syncs and collaborative discussions to evaluate experimental findings and refine methodologies."] },
   { role: "Web Development Intern", company: "Sukkur Electric Power Company (SEPCO)", date: "Jun 2025 – Jul 2025", points: [
     "Developed and maintained responsive web pages to improve user accessibility and experience.",
@@ -96,4 +98,19 @@ export const webCerts: Cert[] = [
   { title: "Level Up: JavaScript", issuer: "LinkedIn Learning", date: "July 2024", image: L + "level-up-js.jpg", pdf: L + "level-up-js.jpg", verifyUrl: "https://www.linkedin.com/learning/certificates/9680b936c99a5cfee22ea553a7ad26f94c405335b82915fdecf6e91c9590458c?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BUeIaBuHtSpC7k%2FYtR7E7Yw%3D%3D", skills: ["Advanced Paradigms", "Performance Tuning", "Functional JS"] },
   { title: "Web Development with WordPress", issuer: "Educate Sindh", date: "September 2024", image: L + "wordpress.jpg", pdf: L + "wordpress.jpg", verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_wordpress-webdevelopment-educatesindh-activity-7237525211988819969-vLzt?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4", skills: ["CMS Design", "Theme Engineering", "Platform Deployment"] },
   { title: "Web Development with HTML & CSS", issuer: "Educate Sindh", date: "September 2024", image: L + "html-css.jpg", pdf: L + "html-css.jpg", verifyUrl: "https://www.linkedin.com/posts/kashish-aienthusiast_webdevelopment-html-css-activity-7237521336808439808-6tsc?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpqDdkBvZRRd0nkgXH9MSVXKsL_VYXpOj4", skills: ["Responsive UI Layouts", "CSS Grid/Flexbox", "Semantic Coding"] },
+];
+
+export const publications = [
+  { kind: "Research Publication", status: "published", badge: "Published - iCoMET 2026",
+    title: "Reducing Unsafe Mental Health Advice in Large Language Models Using Safety-Aware Prompting",
+    url: "https://ieeexplore.ieee.org/document/11591507",
+    desc: "Focuses on enhancing the safety constraints of LLMs to prevent the generation of harmful or inappropriate mental health advice." },
+  { kind: "Journal Paper", status: "review", badge: "Submitted - Under Review",
+    title: "Edge-Agritech Vision: Two-Stage Cascaded 12-Class Sugarcane Disease Diagnosis on Resource-Constrained CPUs",
+    url: "",
+    desc: "Sugarcane leaf disease classification with a two-stage cascade of lightweight models, designed to run on resource-constrained CPUs." },
+  { kind: "Ongoing Research", status: "ongoing", badge: "In Progress - Deep-NLP.ai",
+    title: "Agentic AI research project",
+    url: "",
+    desc: "A research project in agentic AI with the Deep-NLP.ai Research Group, targeted at an academic journal." },
 ];

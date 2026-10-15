@@ -7,6 +7,21 @@
   --lime: #c8f31d;
   --muted: #566074;
   --line: #c9d1cb;
+  --surface: #ffffff;
+  --band: #101828;
+  --vsolid: #4f3bff;
+  --onlime: #101828;
+}
+
+.dark {
+  color-scheme: dark;
+  --paper: #0b1020;
+  --ink: #e7ecf6;
+  --violet: #9a8cff;
+  --muted: #9aa5bb;
+  --line: #263049;
+  --surface: #141b2f;
+  --band: #060913;
 }
 
 @theme inline {
@@ -16,12 +31,16 @@
   --color-lime: var(--lime);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-band: var(--band);
+  --color-vsolid: var(--vsolid);
+  --color-onlime: var(--onlime);
   --font-display: var(--font-bricolage);
   --font-sans: var(--font-plex);
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(--paper); color: var(--ink); font-family: var(--font-plex), system-ui, sans-serif; }
+body { transition: background-color .25s, color .25s; background: var(--paper); color: var(--ink); font-family: var(--font-plex), system-ui, sans-serif; }
 ::selection { background: var(--lime); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
 

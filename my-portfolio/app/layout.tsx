@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} antialiased`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}` }} />
+      </head>
       <body className="min-h-screen">{children}</body>
     </html>
   );

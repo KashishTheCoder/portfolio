@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Mail, ExternalLink, Download, Menu, X, ChevronDown, ChevronUp, FileText, Send, ArrowUpRight } from "lucide-react";
+import { Mail, ExternalLink, Download, Menu, X, ChevronDown, ChevronUp, FileText, Send, ArrowUpRight, Sun, Moon } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { skills, experience, volunteership, projects, academicCerts, aiSpecializations, webCerts, type Cert } from "./data";
+import { skills, experience, volunteership, projects, publications, academicCerts, aiSpecializations, webCerts, type Cert } from "./data";
 
 const EMAIL = "kashishbasreja.fss22@gmail.com";
 const NAV = [
   ["home", "Home"], ["about", "About"], ["research", "Research"], ["skills", "Skills"], ["experience", "Experience"],
   ["projects", "Projects"], ["credentials", "Credentials"], ["achievements", "Achievements"], ["contact", "Contact"],
 ];
-const TITLES = ["AI Engineer", "AI Researcher", "ML Engineer", "Software Developer", "Deep Learning Engineer"];
+const TITLES = ["AI Engineer", "AI Researcher", "Agentic AI Researcher", "ML Engineer", "Software Developer", "Deep Learning Engineer"];
 
 const H = ({ children, sub }: { children: React.ReactNode; sub?: string }) => (
   <div className="mb-10 max-w-2xl">
@@ -20,11 +20,11 @@ const H = ({ children, sub }: { children: React.ReactNode; sub?: string }) => (
 );
 
 const Pill = ({ children, dark }: { children: React.ReactNode; dark?: boolean }) => (
-  <span className={`text-xs px-2.5 py-1 rounded-full border ${dark ? "border-white/25 text-white/80" : "border-line bg-white/60"}`}>{children}</span>
+  <span className={`text-xs px-2.5 py-1 rounded-full border ${dark ? "border-white/25 text-white/80" : "border-line bg-surface/60"}`}>{children}</span>
 );
 
 const CertCard = ({ c, label }: { c: Cert; label: string }) => (
-  <article className={`flex flex-col rounded-2xl bg-white p-4 border ${c.highlight ? "border-ink shadow-[6px_6px_0_var(--lime)]" : "border-line"}`}>
+  <article className={`flex flex-col rounded-2xl bg-surface p-4 border ${c.highlight ? "border-ink shadow-[6px_6px_0_var(--lime)]" : "border-line"}`}>
     <div className="h-44 rounded-lg bg-paper flex items-center justify-center p-2 mb-4 overflow-hidden">
       <img src={c.image} alt={c.title} className="max-w-full max-h-full object-contain" />
     </div>
@@ -33,8 +33,8 @@ const CertCard = ({ c, label }: { c: Cert; label: string }) => (
     <p className="text-xs text-muted mb-3">{c.date}</p>
     <div className="flex flex-wrap gap-1.5 mb-5">{c.skills.map((s) => <Pill key={s}>{s}</Pill>)}</div>
     <div className="grid grid-cols-2 gap-2 mt-auto text-sm font-medium">
-      <a href={c.verifyUrl} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-1.5 py-2 rounded-lg border border-ink hover:bg-ink hover:text-white transition"><ExternalLink size={14} /> Verify</a>
-      <a href={c.pdf} download className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-ink text-white hover:bg-violet transition"><Download size={14} /> {label}</a>
+      <a href={c.verifyUrl} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-1.5 py-2 rounded-lg border border-ink hover:bg-ink hover:text-paper transition"><ExternalLink size={14} /> Verify</a>
+      <a href={c.pdf} download className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-ink text-paper hover:bg-violet transition"><Download size={14} /> {label}</a>
     </div>
   </article>
 );
@@ -62,6 +62,21 @@ export default function Portfolio() {
   const [del, setDel] = useState(false);
   const [tab, setTab] = useState<"research" | "ai" | "web">("ai");
   const [open, setOpen] = useState<string | null>(null);
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => setDark(document.documentElement.classList.contains("dark")), []);
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    try { localStorage.setItem("theme", next ? "dark" : "light"); } catch {}
+  };
+  const ThemeBtn = () => (
+    <button onClick={toggleTheme} aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      className="p-2 rounded-full border border-ink hover:bg-ink hover:text-paper transition">
+      {dark ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
+  );
 
   useEffect(() => {
     const full = TITLES[tIdx];
@@ -91,7 +106,7 @@ export default function Portfolio() {
 
   const tabBtn = (k: typeof tab, label: string) => (
     <button key={k} onClick={() => setTab(k)}
-      className={`px-4 py-2 text-sm font-medium rounded-full border transition whitespace-nowrap ${tab === k ? "bg-ink text-white border-ink" : "border-line hover:border-ink"}`}>{label}</button>
+      className={`px-4 py-2 text-sm font-medium rounded-full border transition whitespace-nowrap ${tab === k ? "bg-ink text-paper border-ink" : "border-line hover:border-ink"}`}>{label}</button>
   );
 
   return (
@@ -102,10 +117,13 @@ export default function Portfolio() {
           <a href="#home" className="font-display text-2xl font-extrabold">Kashish<span className="text-violet">.</span></a>
           <nav className="mt-10 space-y-1">{NAV.map(([id, l]) => link(id, l))}</nav>
         </div>
+        <div className="space-y-5">
+        <ThemeBtn />
         <div className="flex gap-3 text-ink">
           <a href="https://github.com/KashishTheCoder" target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-violet"><FaGithub size={20} /></a>
           <a href="https://www.linkedin.com/in/kashish-aienthusiast" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-violet"><FaLinkedin size={20} /></a>
           <a href={`mailto:${EMAIL}`} aria-label="Email" className="hover:text-violet"><Mail size={20} /></a>
+        </div>
         </div>
       </aside>
 
@@ -113,7 +131,7 @@ export default function Portfolio() {
       <header className="lg:hidden fixed top-0 inset-x-0 z-50 bg-paper/95 backdrop-blur border-b border-line">
         <div className="flex items-center justify-between px-5 py-3">
           <a href="#home" className="font-display text-xl font-extrabold">Kashish<span className="text-violet">.</span></a>
-          <button onClick={() => setMenu(!menu)} aria-label="Menu">{menu ? <X size={26} /> : <Menu size={26} />}</button>
+          <div className="flex items-center gap-3"><ThemeBtn /><button onClick={() => setMenu(!menu)} aria-label="Menu">{menu ? <X size={26} /> : <Menu size={26} />}</button></div>
         </div>
         {menu && <nav className="px-6 pb-5 space-y-1 bg-paper">{NAV.map(([id, l]) => link(id, l, true))}</nav>}
       </header>
@@ -127,27 +145,30 @@ export default function Portfolio() {
               <h1 className="font-display font-extrabold leading-[0.85] tracking-tighter text-[22vw] lg:text-[11rem] -ml-1">Kashish</h1>
               <p className="font-display text-3xl md:text-5xl font-bold mt-6 min-h-[1.3em]">
                 And I&apos;m a{/^[AEIOU]/.test(text) ? "n" : ""}{" "}
-                <span className="bg-lime px-2 -mx-1">{text}</span><span className="caret text-violet">|</span>
+                <span className="bg-lime text-onlime px-2 -mx-1">{text}</span><span className="caret text-violet">|</span>
               </p>
               <p className="text-lg md:text-xl text-muted max-w-xl mt-6 leading-relaxed">
-                Building at the intersection of Deep Learning, Explainable AI, and real-world software architecture.
+                Building at the intersection of Deep Learning, Agentic AI, Explainable AI, and real-world software architecture.
+              </p>
+              <p className="mt-5 inline-flex items-center gap-2 text-sm border border-ink rounded-full px-4 py-1.5 bg-surface">
+                <span className="h-2 w-2 rounded-full bg-violet" /> Now researching agentic AI with the Deep-NLP.ai Research Group
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-8">
-                <a href="/cv.pdf" download="Kashish_CV.pdf" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink text-white font-semibold hover:bg-violet transition"><Download size={18} /> Download CV</a>
+                <a href="/cv.pdf" download="Kashish_CV.pdf" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink text-paper font-semibold hover:bg-violet transition"><Download size={18} /> Download CV</a>
                 {[[FaGithub, "https://github.com/KashishTheCoder"], [FaLinkedin, "https://www.linkedin.com/in/kashish-aienthusiast"]].map(([Ic, href]: any) => (
-                  <a key={href} href={href} target="_blank" rel="noreferrer" className="p-3 rounded-full border border-ink hover:bg-ink hover:text-white transition"><Ic size={20} /></a>
+                  <a key={href} href={href} target="_blank" rel="noreferrer" className="p-3 rounded-full border border-ink hover:bg-ink hover:text-paper transition"><Ic size={20} /></a>
                 ))}
-                <a href={`mailto:${EMAIL}`} className="p-3 rounded-full border border-ink hover:bg-ink hover:text-white transition"><Mail size={20} /></a>
+                <a href={`mailto:${EMAIL}`} className="p-3 rounded-full border border-ink hover:bg-ink hover:text-paper transition"><Mail size={20} /></a>
               </div>
             </div>
             <div className="relative w-56 lg:w-full mx-auto">
               <div className="absolute inset-0 bg-lime rounded-[2rem] translate-x-4 translate-y-4 rotate-3" />
-              <img src="/me.jpg" alt="Kashish" className="relative w-full aspect-[4/5] object-cover rounded-[2rem] border-2 border-ink bg-white -rotate-2" />
+              <img src="/me.jpg" alt="Kashish" className="relative w-full aspect-[4/5] object-cover rounded-[2rem] border-2 border-ink bg-surface -rotate-2" />
             </div>
           </div>
           {/* Loss curve: draws itself once on load */}
-          <svg viewBox="0 0 1200 140" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-28 md:h-36 pointer-events-none" aria-hidden>
-            <path className="draw" d="M0 10 C 90 12, 140 120, 260 100 S 420 60, 520 98 S 700 112, 800 104 S 1000 112, 1200 108" fill="none" stroke="#4f3bff" strokeWidth="3" vectorEffect="non-scaling-stroke" />
+          <svg viewBox="0 0 1200 140" preserveAspectRatio="none" className="text-violet absolute bottom-0 left-0 w-full h-28 md:h-36 pointer-events-none" aria-hidden>
+            <path className="draw" d="M0 10 C 90 12, 140 120, 260 100 S 420 60, 520 98 S 700 112, 800 104 S 1000 112, 1200 108" fill="none" stroke="currentColor" strokeWidth="3" vectorEffect="non-scaling-stroke" />
           </svg>
         </section>
 
@@ -160,33 +181,40 @@ export default function Portfolio() {
               <p>During my time at university, I focused heavily on building practical systems and diving into AI research. Some of my defining work includes:</p>
               <ul className="space-y-4 border-l-2 border-lime pl-5">
                 <li><strong>NeuroEmotion:</strong> For my Final Year Project, I developed a bimodal emotion recognition system featuring two distinct modules: one that analyzes human emotional states using EEG brainwave signals, and another that processes facial expressions.</li>
-                <li><strong>AI Research:</strong> I recently presented my paper, <em>&quot;Reducing Unsafe Mental Health Advice in LLMs Using Safety-Aware Prompting,&quot;</em> at the <strong>iCoMET 2026</strong> conference, focusing on making large language models safer and more reliable.</li>
+                <li><strong>AI Research:</strong> I presented my paper, <em>&quot;Reducing Unsafe Mental Health Advice in LLMs Using Safety-Aware Prompting,&quot;</em> at the <strong>iCoMET 2026</strong> conference, focusing on making large language models safer and more reliable. My first journal paper, <em>&quot;Edge-Agritech Vision,&quot;</em> on sugarcane leaf disease diagnosis for low-power CPUs, is now submitted and under review. I&apos;m also working on a research project in agentic AI with the Deep-NLP.ai Research Group.</li>
                 <li><strong>Software &amp; Mobile Development:</strong> Alongside AI, I love building complete products. I developed <em>Bespoke Threads</em>, a Kotlin-based mobile marketplace for customized clothing, and built deep learning models (using PyTorch and ResNet) for multi-label medical image classification.</li>
-                <li><strong>Industry Experience:</strong> I gained hands-on development experience through internships at SEPCO and Students Empowered Oasis, which taught me how to deliver real solutions on a timeline.</li>
+                <li><strong>Industry Experience:</strong> I gained hands-on development experience through internships at SEPCO and Students Empowered Oasis, and by joining Deep-NLP.ai as a Research Collaborator, which taught me how to deliver real solutions on a timeline.</li>
               </ul>
+              <p>I also completed Andrew Ng&apos;s Machine Learning Specialization (DeepLearning.AI) to strengthen my fundamentals in supervised and unsupervised learning, neural networks, recommenders, and reinforcement learning.</p>
               <p>Outside of classes, I spent a lot of time giving back to the campus community. Serving as an executive member of the Computer Science Society and being part of the SIBA Tech Club allowed me to organize events, mentor peers, and help build a strong tech culture on campus.</p>
               <p>Now that I&apos;ve wrapped up my final exams, I am actively looking for full-time opportunities as an <strong>AI Engineer, Machine Learning Engineer, or Software Developer</strong>. I&apos;m eager to join a team where I can keep learning, writing clean code, and building intelligent systems.</p>
               <p className="font-medium">Let’s connect! Feel free to reach out here on LinkedIn or drop me a line via email at <a href={`mailto:${EMAIL}`} className="text-violet underline underline-offset-4">{EMAIL}</a> to talk about open roles, collaborations, or anything tech-related.</p>
             </div>
 
             <div className="space-y-8">
-              <div className="rounded-2xl bg-ink text-white p-7">
+              <div className="rounded-2xl bg-band text-white p-7">
                 <h3 className="font-display text-2xl font-bold">Education</h3>
                 <h4 className="mt-4 text-lg font-semibold">BS Computer Science</h4>
                 <p className="text-white/70">Sukkur IBA University | 2022 — 2026</p>
-                <p className="inline-block mt-4 px-3 py-1 rounded-full bg-lime text-ink font-bold text-sm">CGPA: 3.67</p>
+                <p className="inline-block mt-4 px-3 py-1 rounded-full bg-lime text-onlime font-bold text-sm">CGPA: 3.67</p>
                 <p className="mt-5 text-sm font-semibold">Key Coursework:</p>
                 <p className="text-sm text-white/70 leading-relaxed">Design &amp; Analysis of Algorithms, Deep Learning, Natural Language Processing, Web Engineering, Data Structures, Object Oriented Programming.</p>
               </div>
-              <div id="research" className="rounded-2xl border-2 border-ink bg-white p-7 scroll-mt-8 shadow-[6px_6px_0_var(--violet)]">
-                <h3 className="font-display text-2xl font-bold">Research Publication</h3>
-                <p className="inline-block mt-3 px-3 py-1 rounded-full bg-violet text-white text-sm font-medium">Published - iCoMET 2026</p>
-                <h4 className="mt-4 font-display text-lg font-bold leading-snug">
-                  <a href="https://ieeexplore.ieee.org/document/11591507" target="_blank" rel="noreferrer" className="hover:text-violet inline-flex gap-2 items-start">
-                    &quot;Reducing Unsafe Mental Health Advice in Large Language Models Using Safety-Aware Prompting&quot; <ExternalLink size={18} className="shrink-0 mt-1" />
-                  </a>
-                </h4>
-                <p className="mt-3 text-sm text-muted leading-relaxed">Focuses on enhancing the safety constraints of LLMs to prevent the generation of harmful or inappropriate mental health advice.</p>
+              <div id="research" className="space-y-5 scroll-mt-8">
+                {publications.map((pub) => (
+                  <div key={pub.title} className={`rounded-2xl border-2 border-ink bg-surface p-7 ${pub.status === "published" ? "shadow-[6px_6px_0_var(--violet)]" : ""}`}>
+                    <h3 className="font-display text-2xl font-bold">{pub.kind}</h3>
+                    <p className={`inline-block mt-3 px-3 py-1 rounded-full text-sm font-medium ${pub.status === "published" ? "bg-vsolid text-white" : "bg-lime text-onlime"}`}>{pub.badge}</p>
+                    <h4 className="mt-4 font-display text-lg font-bold leading-snug">
+                      {pub.url ? (
+                        <a href={pub.url} target="_blank" rel="noreferrer" className="hover:text-violet inline-flex gap-2 items-start">
+                          &quot;{pub.title}&quot; <ExternalLink size={18} className="shrink-0 mt-1" />
+                        </a>
+                      ) : <>&quot;{pub.title}&quot;</>}
+                    </h4>
+                    <p className="mt-3 text-sm text-muted leading-relaxed">{pub.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -195,11 +223,11 @@ export default function Portfolio() {
         {/* SKILLS */}
         <section id="skills" className="px-6 md:px-12 py-20 scroll-mt-8 max-w-6xl">
           <H>Tech stack</H>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 gap-10">
             {Object.entries(skills).map(([cat, items]) => (
               <div key={cat}>
                 <h3 className="font-display text-xl font-bold border-b-2 border-ink pb-2 mb-4">{cat}</h3>
-                <div className="flex flex-wrap gap-2">{items.map((s) => <span key={s} className="px-3 py-1.5 rounded-lg bg-white border border-line text-sm hover:bg-lime hover:border-ink transition">{s}</span>)}</div>
+                <div className="flex flex-wrap gap-2">{items.map((s) => <span key={s} className="px-3 py-1.5 rounded-lg bg-surface border border-line text-sm hover:bg-lime hover:text-onlime hover:border-ink transition">{s}</span>)}</div>
               </div>
             ))}
           </div>
@@ -212,7 +240,7 @@ export default function Portfolio() {
         </section>
 
         {/* PROJECTS — the one dark band */}
-        <section id="projects" className="bg-ink text-white px-6 md:px-12 py-24 scroll-mt-8">
+        <section id="projects" className="bg-band text-white px-6 md:px-12 py-24 scroll-mt-8">
           <div className="max-w-6xl">
             <H>Featured projects</H>
             <div className="divide-y divide-white/15 border-y border-white/15">
@@ -245,22 +273,22 @@ export default function Portfolio() {
           {tab === "ai" && (
             <div className="space-y-5 max-w-4xl">
               {aiSpecializations.map((s, idx) => (
-                <div key={s.id} className={`rounded-2xl bg-white p-6 border ${idx === 0 ? "border-ink shadow-[6px_6px_0_var(--lime)]" : "border-line"}`}>
+                <div key={s.id} className={`rounded-2xl bg-surface p-6 border ${idx === 0 ? "border-ink shadow-[6px_6px_0_var(--lime)]" : "border-line"}`}>
                   <div className="flex flex-col sm:flex-row justify-between gap-4">
                     <div>
                       <h4 className="font-display text-xl font-bold flex flex-wrap items-center gap-2">
                         {s.title}
-                        {s.isSpecialization && <span className="text-xs font-medium bg-violet text-white px-2.5 py-0.5 rounded-full">Specialization</span>}
+                        {s.isSpecialization && <span className="text-xs font-medium bg-vsolid text-white px-2.5 py-0.5 rounded-full">Specialization</span>}
                       </h4>
                       <p className="text-sm text-violet mt-1">{s.issuer}</p>
                       <p className="text-xs text-muted mt-0.5">{s.date}</p>
                       <div className="flex flex-wrap gap-1.5 mt-3">{s.skills.map((k) => <Pill key={k}>{k}</Pill>)}</div>
                     </div>
                     <div className="flex gap-2 shrink-0 text-sm font-medium sm:self-start flex-wrap">
-                      <a href={s.verifyUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-ink hover:bg-ink hover:text-white transition"><ExternalLink size={14} /> Verify</a>
-                      <a href={s.pdf} download className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-ink text-white hover:bg-violet transition"><Download size={14} /> Full PDF</a>
+                      <a href={s.verifyUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-ink hover:bg-ink hover:text-paper transition"><ExternalLink size={14} /> Verify</a>
+                      <a href={s.pdf} download className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-ink text-paper hover:bg-violet transition"><Download size={14} /> Full PDF</a>
                       {s.isSpecialization && (
-                        <button onClick={() => setOpen(open === s.id ? null : s.id)} className="flex items-center gap-1 px-3 py-2 rounded-lg bg-lime text-ink hover:brightness-95 transition">
+                        <button onClick={() => setOpen(open === s.id ? null : s.id)} className="flex items-center gap-1 px-3 py-2 rounded-lg bg-lime text-onlime hover:brightness-95 transition">
                           {open === s.id ? <ChevronUp size={14} /> : <ChevronDown size={14} />} Courses ({s.courses?.length})
                         </button>
                       )}
@@ -296,13 +324,13 @@ export default function Portfolio() {
               ["/laptop-award.jpg", "Laptop Scheme", "PM Youth Laptop Scheme 2023", "Secured a laptop based on academic excellence with an incredible CGPA of 3.79."],
               ["/best-dev-award.jpg", "Best Developer", "Best Web Developer of the Year", "Awarded at Students Empowered Oasis after a year of dedicated volunteering and platform management."],
             ].map(([src, alt, t, d]) => (
-              <div key={t} className="rounded-2xl bg-white border border-line p-5 flex flex-col">
+              <div key={t} className="rounded-2xl bg-surface border border-line p-5 flex flex-col">
                 <div className="h-48 rounded-lg bg-paper flex items-center justify-center p-2 mb-5 overflow-hidden"><img src={src} alt={alt} className="max-w-full max-h-full object-contain rounded" /></div>
                 <h4 className="font-display text-lg font-bold">{t}</h4>
                 <p className="text-sm text-muted mt-2 leading-relaxed">{d}</p>
               </div>
             ))}
-            <div className="rounded-2xl bg-lime border-2 border-ink p-7 flex flex-col justify-center">
+            <div className="rounded-2xl bg-lime text-onlime border-2 border-ink p-7 flex flex-col justify-center">
               <h4 className="font-display text-2xl font-extrabold leading-tight">Fully Funded Scholarship</h4>
               <p className="mt-3 leading-relaxed">Secured for a 4-year Bachelor&apos;s degree under the prestigious Sindh Talent Hunt Program (STHP) - 2022.</p>
             </div>
@@ -311,10 +339,10 @@ export default function Portfolio() {
 
         {/* CONTACT */}
         <section id="contact" className="px-6 md:px-12 py-20 scroll-mt-8">
-          <div className="max-w-6xl rounded-3xl bg-violet text-white p-8 md:p-12 grid md:grid-cols-2 gap-12">
+          <div className="max-w-6xl rounded-3xl bg-vsolid text-white p-8 md:p-12 grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95]">Let&apos;s connect.</h2>
-              <p className="mt-6 text-white/85 text-lg leading-relaxed">I&apos;m currently open to new opportunities, AI research collaborations, and full-stack development roles. Whether you have a project in mind or just want to say hi, my inbox is always open!</p>
+              <p className="mt-6 text-white/85 text-lg leading-relaxed">I&apos;m currently open to full-time AI/ML engineering roles, AI research collaborations (including agentic AI), and full-stack development roles. Whether you have a project in mind or just want to say hi, my inbox is always open!</p>
               <div className="mt-8 space-y-4">
                 <a href={`mailto:${EMAIL}`} className="flex items-center gap-3 hover:text-lime transition break-all"><Mail size={22} /> {EMAIL}</a>
                 <a href="https://www.linkedin.com/in/kashish-aienthusiast" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-lime transition"><FaLinkedin size={22} /> LinkedIn Profile</a>
@@ -324,14 +352,14 @@ export default function Portfolio() {
               {[["name", "Your Name", "text", "John Doe"], ["email", "Your Email", "email", "john@example.com"]].map(([n, l, t, ph]) => (
                 <div key={n}>
                   <label htmlFor={n} className="block text-sm font-medium mb-1.5">{l}</label>
-                  <input id={n} name={n} type={t} required placeholder={ph} className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:border-violet outline-none" />
+                  <input id={n} name={n} type={t} required placeholder={ph} className="w-full px-4 py-3 rounded-xl bg-surface border border-line focus:border-violet outline-none" />
                 </div>
               ))}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-1.5">Your Message</label>
-                <textarea id="message" name="message" rows={4} required placeholder="How can we work together?" className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:border-violet outline-none resize-none" />
+                <textarea id="message" name="message" rows={4} required placeholder="How can we work together?" className="w-full px-4 py-3 rounded-xl bg-surface border border-line focus:border-violet outline-none resize-none" />
               </div>
-              <button type="submit" className="w-full py-3.5 rounded-xl bg-ink text-white font-semibold flex items-center justify-center gap-2 hover:bg-violet transition">Send message <Send size={18} /></button>
+              <button type="submit" className="w-full py-3.5 rounded-xl bg-ink text-paper font-semibold flex items-center justify-center gap-2 hover:bg-violet transition">Send message <Send size={18} /></button>
             </form>
           </div>
         </section>
